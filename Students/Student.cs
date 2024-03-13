@@ -30,6 +30,12 @@ namespace Students
 
 
 
+        public int AddressId { get; set; }
+
+        public Address? Address { get; set; }
+
+
+
         [NotMapped]
         public string LastName { get; set; }
 
