@@ -11,13 +11,14 @@ namespace Students
     {
         public StudentContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         public virtual DbSet<Student> Students { get; set; }
-
         public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<Curator> Curators { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

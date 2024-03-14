@@ -22,7 +22,7 @@ namespace Students
         //[Column("bd")]
         public DateOnly BirthDay { get; set; }
 
-
+        //public string? StudentCard {  get; set; }
 
         public int GroupId { get; set; }
 
@@ -38,6 +38,12 @@ namespace Students
 
         [NotMapped]
         public string LastName { get; set; }
+
+
+        public List<Subject> Subjects { get; set; } = new();
+
+
+        
 
         public override string ToString()
         {
