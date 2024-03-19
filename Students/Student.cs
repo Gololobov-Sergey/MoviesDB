@@ -37,7 +37,7 @@ namespace Students
 
 
         [NotMapped]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
 
         public List<Subject> Subjects { get; set; } = new();
