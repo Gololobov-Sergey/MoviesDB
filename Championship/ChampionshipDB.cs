@@ -8,18 +8,21 @@ using System.Threading.Tasks;
 
 namespace Championship
 {
-    public class CampionshipDB : DbContext
+    public class ChampionshipDB : DbContext
     {
         public DbSet<Team> Teams { get; set; } = null!;
+        public DbSet<Player> Players { get; set; } = null!;
+        public DbSet<Game> Games { get; set; } = null!;
+        public DbSet<Goal> Goals { get; set; } = null!;
 
-        public CampionshipDB() 
+        public ChampionshipDB() 
         { 
             //Database.EnsureDeleted();
             //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=TAURUS\\SQLEXPRESS;Initial Catalog=CampionshipDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        => optionsBuilder.UseSqlServer("Data Source=TAURUS\\SQLEXPRESS;Initial Catalog=ChampionshipDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,20 +34,14 @@ namespace Championship
             {
                 Id = 1,
                 Name = "Atletico",
-                City = "Madrid",
-                Wins = 3,
-                Lose = 1,
-                Draw = 5
+                City = "Madrid"
             },
 
             new Team()
             {
                 Id = 2,
                 Name = "Valencia",
-                City = "Valencia",
-                Wins = 1,
-                Lose = 3,
-                Draw = 2
+                City = "Valencia"
             }
             );
         }

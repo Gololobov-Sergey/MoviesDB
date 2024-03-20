@@ -1,38 +1,50 @@
-﻿namespace Championship
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Championship
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            using(CampionshipDB db  = new CampionshipDB())
+            using (ChampionshipDB db = new ChampionshipDB())
             {
-                Team t1 = new Team()
+
+                //for (int i = 0; i < 20; i++)
+                //{
+                //    db.Players.Add(new Player()
+                //    {
+                //        Name = $"Player - Team {i / 5 + 1}",
+                //        Number = i + 1,
+                //        Position = "Forward",
+                //        TeamId = i / 5 + 1
+                //    });
+                //}
+
+                //db.SaveChanges();
+
+                //var player = db.Players
+                //    .Include(t => t.Team)
+                //    .ToList();
+                //foreach (Player p in db.Players)
+                //{
+                //    Console.WriteLine(p);
+                //}
+
+
+                var games = db.Games
+                    .Include(t => t.Team1)
+                    .Include(t => t.Team2)
+                    .Where(t => t.Team1!.Name == "Valencia" 
+                    || t.Team2!.Name == "Valencia");
+
+                var gg = db.Games.Include(g=>g.Team1)
+                    .Where(t=> t.TeamId1 == 1).ToList();
+
+                foreach (var game in gg)
                 {
-                    Name = "Real",
-                    City = "Madrid",
-                    Wins = 3,
-                    Lose = 1,
-                    Draw = 5
-                };
-
-
-                Team t2 = new Team()
-                {
-                    Name = "Barcelona",
-                    City = "Barcelona",
-                    Wins = 1,
-                    Lose = 3,
-                    Draw = 2
-                };
-
-                db.Teams.AddRange(t1, t2);
-                db.SaveChanges();
-
-                var teams = db.Teams;
-                foreach (Team t in db.Teams)
-                {
-                    Console.WriteLine($"{t.Name} {t.City} {t.Wins} {t.Lose} {t.Draw}");
+                    Console.WriteLine($"{game}");
                 }
+
             }
         }
     }

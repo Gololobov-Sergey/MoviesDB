@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Championship.Migrations
 {
-    [DbContext(typeof(CampionshipDB))]
+    [DbContext(typeof(ChampionshipDB))]
     [Migration("20240319190957_AddGoals")]
     partial class AddGoals
     {
