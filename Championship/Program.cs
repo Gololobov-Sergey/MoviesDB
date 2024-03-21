@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Championship
 {
@@ -31,19 +32,28 @@ namespace Championship
                 //}
 
 
-                var games = db.Games
-                    .Include(t => t.Team1)
-                    .Include(t => t.Team2)
-                    .Where(t => t.Team1!.Name == "Valencia" 
-                    || t.Team2!.Name == "Valencia");
+                //var games = db.Games
+                //    .Include(t => t.Team1)
+                //    .Include(t => t.Team2)
+                //    .Include(g => g.Goals)
+                //    .Where(t => t.Team1!.Name == "Valencia" 
+                //    || t.Team2!.Name == "Valencia");
 
-                var gg = db.Games.Include(g=>g.Team1)
-                    .Where(t=> t.TeamId1 == 1).ToList();
+                //var gg = db.Games
+                //    .Include(g => g.Team1)
+                //    .Include(g => g.Team2)
+                //    .Include(g => g.Goals)
+                //    .ToList();
 
-                foreach (var game in gg)
-                {
-                    Console.WriteLine($"{game}");
-                }
+                //foreach (var game in gg)
+                //{
+                //    int g1 = game.Goals.Count(g => game.TeamId1 == g.TeamId);
+                //    int g2 = game.Goals.Count(g => game.TeamId2 == g.TeamId);
+                //    Console.WriteLine($"{game} {g1} {g2}");
+                //}
+
+
+
 
             }
         }

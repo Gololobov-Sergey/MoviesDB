@@ -10,6 +10,7 @@ namespace Championship
 {
     public class ChampionshipDB : DbContext
     {
+        public List<TournamentTable> TournamentTable = [];
         public DbSet<Team> Teams { get; set; } = null!;
         public DbSet<Player> Players { get; set; } = null!;
         public DbSet<Game> Games { get; set; } = null!;

@@ -26,6 +26,8 @@ namespace Championship
         [ForeignKey("TeamId2")]
         public Team? Team2 { get; set; }
 
+        public List<Goal> Goals { get; set; } = [];
+
         public override string ToString()
         {
             return $"{Date} {Team1?.Name} - {Team2?.Name}";

@@ -47,7 +47,7 @@ namespace Championship.Migrations
 
                     b.HasIndex("TeamId2");
 
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
                 });
 
             modelBuilder.Entity("Championship.Goal", b =>
@@ -78,7 +78,7 @@ namespace Championship.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Goals");
+                    b.ToTable("Goals", (string)null);
                 });
 
             modelBuilder.Entity("Championship.Player", b =>
@@ -105,7 +105,7 @@ namespace Championship.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", (string)null);
                 });
 
             modelBuilder.Entity("Championship.Team", b =>
@@ -124,7 +124,7 @@ namespace Championship.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", (string)null);
 
                     b.HasData(
                         new

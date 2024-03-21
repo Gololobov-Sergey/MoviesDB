@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace Students
 {
@@ -59,15 +60,15 @@ namespace Students
             {
 
                 var st = db.Students
-                    .Include(g => g.Group)
+                    .Include(s => s.Group)
                      //   .ThenInclude(g => g.Curator)
                      .Include(g => g.Group!.Curator)
                     .ToList();
 
                 foreach (Student s in st)
                 {
-                    Console.WriteLine($"{s.Name} {s.Group!.Name} {s.Group!.Curator!.Name}");
-
+                    Console.WriteLine($"{s.Name} ");
+                    /*{s.Group!.Name} {s.Group!.Curator!.Name}*/
                 }
             }
        
