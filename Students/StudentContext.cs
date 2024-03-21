@@ -19,6 +19,7 @@ namespace Students
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Curator> Curators { get; set; }
+        public virtual DbSet<Exam> Exam { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

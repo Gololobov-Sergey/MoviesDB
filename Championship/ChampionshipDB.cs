@@ -16,6 +16,11 @@ namespace Championship
         public DbSet<Game> Games { get; set; } = null!;
         public DbSet<Goal> Goals { get; set; } = null!;
 
+        public IQueryable<Team> GetTeams(string city)
+        {
+            return FromExpression(() => GetTeams(city));
+        }
+
         public ChampionshipDB() 
         { 
             //Database.EnsureDeleted();
@@ -28,7 +33,9 @@ namespace Championship
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.HasDbFunction(() => GetTeams(default));
+
+            //modelBuilder.HasDbFunction(typeof(ChampionshipDB).GetMethod(nameof(GetTeam), null));
 
             modelBuilder.Entity<Team>().HasData(
             new Team()

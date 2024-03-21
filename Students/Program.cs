@@ -56,25 +56,52 @@ namespace Students
             //}
             #endregion
 
+            //using (StudentContext db = new StudentContext())
+            //{
+
+            //    var st = db.Students
+            //        .Include(s => s.Group)
+            //         //   .ThenInclude(g => g.Curator)
+            //         .Include(g => g.Group!.Curator)
+            //        .ToList();
+
+            //    foreach (Student s in st)
+            //    {
+            //        Console.WriteLine($"{s.Name} ");
+            //        /*{s.Group!.Name} {s.Group!.Curator!.Name}*/
+            //    }
+            //}
+
+
             using (StudentContext db = new StudentContext())
             {
 
-                var st = db.Students
-                    .Include(s => s.Group)
-                     //   .ThenInclude(g => g.Curator)
-                     .Include(g => g.Group!.Curator)
+               var student = db.Students
+                    .Include(s=>s.Exam)
+                        .ThenInclude(e=>e.Subject)
                     .ToList();
 
-                foreach (Student s in st)
+                foreach (var s in student)
                 {
-                    Console.WriteLine($"{s.Name} ");
-                    /*{s.Group!.Name} {s.Group!.Curator!.Name}*/
+                    Console.WriteLine($"{s.Name}");
+                    foreach (var e in s.Exam)
+                    {
+                        Console.Write($"{e.Subject.Name} {e.Mark}, ");
+                    }
+                    Console.WriteLine();
+                }
+
+                SqlParameter param = new SqlParameter("@param", "%a%");
+                var st = db.Students
+                    .FromSqlRaw("select * from students where name like @param", param).ToList();
+                foreach(var s in st)
+                {
+                    Console.WriteLine(s);
                 }
             }
-       
 
-  
-        
+
+
 
 
         }

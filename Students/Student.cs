@@ -42,8 +42,8 @@ namespace Students
 
         public List<Subject> Subjects { get; set; } = new();
 
+        public List<Exam> Exam { get; set; } = [];
 
-        
 
         public override string ToString()
         {

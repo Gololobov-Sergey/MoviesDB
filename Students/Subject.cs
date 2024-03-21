@@ -15,5 +15,7 @@ namespace Students
         public string? Name { get; set; }
 
         public List<Student> Students { get; set; } = new();
+
+        public List<Exam> Exam { get; set; } = [];
     }
 }
