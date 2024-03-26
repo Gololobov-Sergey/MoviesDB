@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using Student_Dapper.Models;
+using System.Data;
 
 namespace Student_Dapper
 {
@@ -70,12 +71,84 @@ namespace Student_Dapper
 
 
                 {
-                    string sql = "SELECT * FROM Students WHERE Id = @Id";
-                    int id  = Convert.ToInt32(Console.ReadLine());
-                    object param =  new { Id = id } ;
-                    var student = connection.QuerySingle<Student>(sql, param);
-                    Console.WriteLine(student);
+                    //string sql = "SELECT * FROM Students WHERE Id = @Id";
+                    //int id  = Convert.ToInt32(Console.ReadLine());
+                    //object param =  new { Id = id } ;
+                    //var student = connection.QuerySingle<Student>(sql, param);
+                    //Console.WriteLine(student);
                 }
+
+
+                {
+                    //string sql = "SELECT * " +
+                    //             "FROM Students " +
+                    //             "JOIN Groups ON Students.GroupId = Groups.Id";
+
+                    //var students = connection.Query<Student, Group, Student>(sql,
+                    //    (s, g) =>
+                    //    {
+                    //        s.Group = g;
+                    //        return s;
+                    //    },
+                    //    splitOn: "Id" );
+
+                    //foreach ( var s in students )
+                    //{
+                    //    Console.WriteLine($"{s.Id} {s.Name} {s.BirthDay.ToShortDateString()} {s.Group!.Name}");
+                    //}
+
+                }
+
+
+                {
+                    //string sql = "SELECT * " +
+                    //             "FROM Students " +
+                    //             "JOIN Groups ON Students.GroupId = Groups.Id " +
+                    //             "JOIN Curators ON Groups.CuratorId = Curators.Id";
+
+                    //var students = connection.Query<Student, Group, Curator, Student>(sql,
+                    //    (s, g, c) =>
+                    //    {
+                    //        g.Curator = c;
+                    //        s.Group = g;
+                    //        return s;
+                    //    },
+                    //    splitOn: "Id");
+
+                    //foreach (var s in students)
+                    //{
+                    //    Console.WriteLine($"{s.Id} {s.Name} {s.BirthDay.ToShortDateString()} {s.Group!.Name} {s.Group!.Curator!.Name}");
+                    //}
+
+                }
+
+                {
+                    //string sql = "SELECT S.Name AS N, S.BirthDay AS BD, G.Name AS GN " +
+                    //             "FROM Students AS S JOIN Groups AS G ON S.GroupId = G.Id";
+
+                    //var students = connection.Query(sql);
+
+                    //foreach (var s in students)
+                    //{
+                    //    Console.WriteLine($"{s.N} {(Convert.ToDateTime(s.BD)).ToShortDateString()} {s.GN}");
+                    //}
+                }
+
+                {
+                    string sql = "SELECT S.Name AS N, S.BirthDay AS BD, G.Name AS GN " +
+                                 "FROM Students AS S JOIN Groups AS G ON S.GroupId = G.Id";
+
+                    var reader = connection.ExecuteReader(sql);
+
+                    DataTable table = new DataTable();
+                    table.Load(reader);
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Console.WriteLine($"{row[0]} {row[1]} {row[2]}");
+                    }
+                }
+
             }
         }
     }

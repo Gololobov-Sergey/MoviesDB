@@ -18,7 +18,7 @@ namespace Student_Dapper.Models
 
         public int GroupId { get; set; }
 
-        //public Group? Group { get; set; }
+        public Group? Group { get; set; }
 
 
         public int AddressId { get; set; }
