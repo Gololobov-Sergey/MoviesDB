@@ -90,9 +90,9 @@ namespace Student_Dapper
                     //        s.Group = g;
                     //        return s;
                     //    },
-                    //    splitOn: "Id" );
+                    //    splitOn: "Id");
 
-                    //foreach ( var s in students )
+                    //foreach (var s in students)
                     //{
                     //    Console.WriteLine($"{s.Id} {s.Name} {s.BirthDay.ToShortDateString()} {s.Group!.Name}");
                     //}
@@ -135,18 +135,18 @@ namespace Student_Dapper
                 }
 
                 {
-                    string sql = "SELECT S.Name AS N, S.BirthDay AS BD, G.Name AS GN " +
-                                 "FROM Students AS S JOIN Groups AS G ON S.GroupId = G.Id";
+                    //string sql = "SELECT S.Name AS N, S.BirthDay AS BD, G.Name AS GN " +
+                    //             "FROM Students AS S JOIN Groups AS G ON S.GroupId = G.Id";
 
-                    var reader = connection.ExecuteReader(sql);
+                    //var reader = connection.ExecuteReader(sql);
 
-                    DataTable table = new DataTable();
-                    table.Load(reader);
+                    //DataTable table = new DataTable();
+                    //table.Load(reader);
 
-                    foreach (DataRow row in table.Rows)
-                    {
-                        Console.WriteLine($"{row[0]} {row[1]} {row[2]}");
-                    }
+                    //foreach (DataRow row in table.Rows)
+                    //{
+                    //    Console.WriteLine($"{row[0]} {row[1]} {row[2]}");
+                    //}
                 }
 
             }
