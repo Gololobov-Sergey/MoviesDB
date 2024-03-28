@@ -9,10 +9,14 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
-    <PackageReference Include="dotnetFiddle.printIt" Version="1.0.0.7" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="Z.Dapper.Plus" Version="7.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PrintData">
+      <HintPath>..\..\DLL\PrintData.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
